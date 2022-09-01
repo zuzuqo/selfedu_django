@@ -2,7 +2,7 @@
 
 ---
 
-To install packages use `pip install requirements.txt`
+To install packages use `pip install -r requirements.txt`
 
 Then in the project folder create a migration file and run them using the following commands
 
