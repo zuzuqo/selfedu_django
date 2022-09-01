@@ -8,16 +8,19 @@
 
 <h1>Women app</h1>
 
-<div class="cards">
+<div class="card-group">
     {% for post in posts %}
-    <div class="card">
-        <p>{{ post.title }}</p>
-<!--        <img src="{{ post.photo }}" alt="{{ post.title }}">-->
-        <p>{{ post.photo }}</p>
-        <p>{{ post.content }}</p>
-        <p>{{ post.time_create }}</p>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ post.photo }}" alt="{{ post.title }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content | linebreaks | truncatewords:50 }}</p>
+            <p class="card-text">{{ post.time_create }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
     {% endfor %}
 </div>
+
 
 {% endblock %}
