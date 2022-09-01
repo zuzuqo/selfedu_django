@@ -1,8 +1,7 @@
 from django.urls import path
-from women.views import index, categories, archive
+from women.views import index, about
 
 urlpatterns = [
     path('', index, name='home'),
-    path('categories/<int:cat_id>/', categories),
-    path('archive/<int:year>/', archive),
+    path('about/', about, name='about'),
 ]

@@ -1,20 +1,20 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect
 
+from women.models import Women
+
+menu = ['О сайте', 'Добавить статью', 'Обратная связь', 'Войти']
 
 def index(request):
-    return HttpResponse('Hello')
+    posts = Women.objects.all()
+    context = {}
+    context['menu'] = menu
+    context['posts'] = posts
+    return render(request, 'women/index.html', context)
 
 
-def categories(request, cat_id):
-    return HttpResponse(f'Categories: {cat_id}')
-
-
-def archive(request, year):
-    if int(year) > 2022:
-        # raise Http404()
-        return redirect('home', permanent=True)
-    return HttpResponse(f'<h1>Архив по годам</h1><p>{year}</p>')
+def about(request):
+    return render(request, 'women/about.html')
 
 
 def page_not_found(request, exception):
