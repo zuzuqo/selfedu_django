@@ -16,7 +16,7 @@
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.content | linebreaks | truncatewords:50 }}</p>
             <p class="card-text">{{ post.time_create }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Подробнее</a>
         </div>
     </div>
     {% endfor %}
