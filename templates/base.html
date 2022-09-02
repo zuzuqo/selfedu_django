@@ -24,6 +24,11 @@
                     <a class="nav-link" href="{% url item.url_name %}">{{ item.title }}</a>
                 </li>
                 {% endfor %}
+                {% for c in category %}
+                    <li class="nav-item">
+                        <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                    </li>
+                {% endfor %}
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

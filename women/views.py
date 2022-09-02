@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect
 
-from women.models import Women
+from women.models import Women, Category
 
 menu = [
     {'title': 'Главная', 'url_name': 'home'},
@@ -14,11 +14,14 @@ menu = [
 
 def index(request):
     posts = Women.objects.all()
+    category = Category.objects.all()
     context = {
         'menu': menu,
         'posts': posts,
+        'category': category,
     }
     return render(request, 'women/index.html', context=context)
+
 
 def post_detail(request, post_id):
     post = Women.objects.get(pk=post_id)
@@ -26,6 +29,7 @@ def post_detail(request, post_id):
         'post': post,
     }
     return render(request, 'women/post_detail.html', context=context)
+
 
 def about(request):
     context = {
@@ -48,3 +52,11 @@ def contact(request):
 
 def login(request):
     return HttpResponse('login')
+
+
+def show_category(request, category_id):
+    posts = Women.objects.filter(category_id=category_id)
+    context = {
+        'posts': posts
+    }
+    return render(request, 'women/category_detail.html', context=context)
