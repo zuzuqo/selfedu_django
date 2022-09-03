@@ -8,6 +8,9 @@
 <h1>
   {{ post.title }}
 </h1>
+{% if post.photo %}
+        <img class="card-img-top" src="{{ post.photo.url }}" alt="{{ post.title }}">
+{% endif %}
 <p>
   {{ post.content | linebreaks }}
 </p>

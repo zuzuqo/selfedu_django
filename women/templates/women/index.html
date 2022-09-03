@@ -11,7 +11,9 @@
 <div class="card-group">
     {% for post in posts %}
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{ post.photo }}" alt="{{ post.title }}">
+        {% if post.photo %}
+        <img class="card-img-top" src="{{ post.photo.url }}" alt="{{ post.title }}">
+        {% endif %}
         <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.content | linebreaks | truncatewords:50 }}</p>

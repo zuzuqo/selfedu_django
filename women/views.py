@@ -13,7 +13,7 @@ menu = [
 
 
 def index(request):
-    posts = Women.objects.all()
+    posts = Women.objects.filter(is_published=True)
     category = Category.objects.all()
     context = {
         'menu': menu,
@@ -24,7 +24,7 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    post = Women.objects.get(pk=post_id)
+    post = Women.objects.get(pk=post_id, is_published=True)
     context = {
         'post': post,
     }
