@@ -13,12 +13,8 @@ menu = [
 
 
 def index(request):
-    posts = Women.objects.filter(is_published=True)
-    category = Category.objects.all()
     context = {
         'menu': menu,
-        'posts': posts,
-        'category': category,
     }
     return render(request, 'women/index.html', context=context)
 
@@ -56,6 +52,10 @@ def login(request):
 
 def show_category(request, category_id):
     posts = Women.objects.filter(category_id=category_id)
+
+    if len(posts) == 0:
+        raise Http404()
+
     context = {
         'posts': posts
     }

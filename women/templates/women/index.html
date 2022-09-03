@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load women_tags %}
 
 {% block title %}
 Домашняя страница :: Women
@@ -8,21 +9,27 @@
 
 <h1>Women app</h1>
 
-<div class="card-group">
-    {% for post in posts %}
-    <div class="card" style="width: 18rem;">
-        {% if post.photo %}
-        <img class="card-img-top" src="{{ post.photo.url }}" alt="{{ post.title }}">
-        {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.content | linebreaks | truncatewords:50 }}</p>
-            <p class="card-text">{{ post.time_create }}</p>
-            <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Подробнее</a>
-        </div>
-    </div>
-    {% endfor %}
+<div class="posts">
+    {% show_posts '-id' %}
+
 </div>
+
+
+<!--<div class="card-group">-->
+<!--    {% for post in posts %}-->
+<!--    <div class="card" style="width: 18rem;">-->
+<!--        {% if post.photo %}-->
+<!--        <img class="card-img-top" src="{{ post.photo.url }}" alt="{{ post.title }}">-->
+<!--        {% endif %}-->
+<!--        <div class="card-body">-->
+<!--            <h5 class="card-title">{{ post.title }}</h5>-->
+<!--            <p class="card-text">{{ post.content | linebreaks | truncatewords:50 }}</p>-->
+<!--            <p class="card-text">{{ post.time_create }}</p>-->
+<!--            <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Подробнее</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--</div>-->
 
 
 {% endblock %}

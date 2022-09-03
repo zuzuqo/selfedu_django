@@ -1,4 +1,5 @@
 {% load static %}
+{% load women_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,11 +25,15 @@
                     <a class="nav-link" href="{% url item.url_name %}">{{ item.title }}</a>
                 </li>
                 {% endfor %}
-                {% for c in category %}
-                    <li class="nav-item">
-                        <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-                    </li>
-                {% endfor %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Категории
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% show_categories 'name' cat_selected %}
+                    </div>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
